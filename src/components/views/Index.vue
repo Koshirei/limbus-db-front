@@ -37,6 +37,7 @@ const screenWidth = ref(window.innerWidth)
 const market = useMarket()
 
 onMounted(() => {
+  window.scrollTo(0, 0)
   if (market.utils.hasInitialLoaded) {
     (document.querySelector('#homepage-content-div-welcome') as HTMLDivElement).style.visibility = 'hidden'
   }

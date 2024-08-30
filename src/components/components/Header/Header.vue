@@ -41,7 +41,7 @@ const handleMenuDrawerClicked = () => {
   }
 
   #header-menu-picker {
-    left: 15px;
+    left: 30px;
 
     .p-button {
       border: 1px solid @grey-borders;
@@ -49,7 +49,7 @@ const handleMenuDrawerClicked = () => {
   }
 
   #header-language-picker {
-    right: 15px;
+    right: 30px;
   }
 }
 </style>

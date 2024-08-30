@@ -6,39 +6,12 @@
       </n-h1>
     </template>
 
-    <router-link :to="{name: 'index'}" @click="closeDrawer()">
-      <div class="clickable">
-        <n-h2 :prefix="checkPrefix('index')">
-          Homepage
-        </n-h2>
-      </div>
-    </router-link>
+    <MenuDrawerItem :route="homepageRoute" @close-drawer="() => closeDrawer()"/>
 
     <n-divider />
 
-    <router-link :to="{name: 'identities'}" @click="closeDrawer()">
-      <div class="clickable">
-        <n-h2 :prefix="checkPrefix('identities')">
-          Identities & E.G.O's
-        </n-h2>
-      </div>
-    </router-link>
-
-    <router-link :to="{name: 'identities2'}" @click="closeDrawer()">
-      <div class="clickable">
-        <n-h2 :prefix="checkPrefix('identities2')">
-          Testing
-        </n-h2>
-      </div>
-    </router-link>
-
-    <n-h2>
-      E.G.O's
-    </n-h2>
-
-    <n-h2>
-      route3
-    </n-h2>
+    <MenuDrawerItem v-for="route in RouteList" :key="route.name"
+                    :route="route" @close-drawer="() => closeDrawer()"/>
 
     <n-divider />
     <n-button> test </n-button>
@@ -50,18 +23,14 @@
 
 <script setup lang="ts">
 
-import router from '@/router'
+import { homepageRoute, RouteList } from '@/components/components/Header/routeList'
+import MenuDrawerItem from '@/components/components/Header/MenuDrawerItem.vue'
 
 const visible = defineModel({
   required: true,
   default: false,
   type: Boolean
 })
-
-
-const checkPrefix = (name: string) => {
-  return router.currentRoute.value.name === name ? 'bar' : null
-}
 
 const closeDrawer = () => {
   visible.value = false

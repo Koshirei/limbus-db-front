@@ -24,10 +24,24 @@ const market = useMarket()
 
 // must be kept so that the initial page load does not trigger a transition
 onMounted(() => {
+  checkIfMobileUI()
+
   setTimeout(() => {
     market.utils.hasInitialLoaded = true
   }, 100)
 })
+
+window.addEventListener('resize', () => {
+  checkIfMobileUI()
+})
+
+const checkIfMobileUI = () => {
+  if (document.body.clientWidth < 900) {
+    market.utils.isMobile = true
+  } else {
+    market.utils.isMobile = false
+  }
+}
 </script>
 
 <style scoped lang="less">
@@ -38,6 +52,8 @@ onMounted(() => {
   transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   position: absolute;
   top:0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .slide-enter-from {

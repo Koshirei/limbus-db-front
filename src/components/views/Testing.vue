@@ -1,19 +1,22 @@
 <template>
   <div class="view">
+    <br/><br/><br/><br/><br/><br/>
     <n-button @click="trigger(5)">
       trigger 5s
     </n-button>
 
-    <n-button @click="trigger(60)">
-      trigger 60s
+    <n-button @click="trigger(600)">
+      trigger 600s
     </n-button>
 
 
     <n-button @click="fetchSinners()">
       fetch
     </n-button>
-
-    {{ fetchResponse }}
+    <br/>
+    <pre>
+      {{ fetchResponse }}
+    </pre>
   </div>
 </template>
 
@@ -21,6 +24,7 @@
 
 import { decrementSpinner, incrementSpinner } from '@/utils/LoadingSpinner'
 import { ref } from 'vue'
+import { SinnersService } from '@/services/SinnersService'
 
 const fetchResponse = ref<any>('')
 
@@ -32,7 +36,7 @@ const trigger = (sec: number) => {
 }
 
 const fetchSinners = async () => {
-
+  fetchResponse.value = await SinnersService.getAllSinners()
 }
 
 </script>

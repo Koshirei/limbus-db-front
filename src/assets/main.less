@@ -1,10 +1,118 @@
 @main-red: rgba(133,12,35,1);
 @grey-borders: #3F3F46;
+@naive-grey-bg: rgba(24,24,28,1);
+@naive-grey-bg-transparent: rgba(24,24,28,0.9);
+
+@yisang: #CFCED3;
+@faust: #E9B5B5;
+@donquixote: #EFDA51;
+@ryoshu: #D44040;
+@meursault: #64649A;
+@honglu: #85E4CD;
+@heathcliff: #7C5D8F;
+@ishmael: #F1A13F;
+@rodion: #993F45;
+@sinclair: #A0A45E;
+@outis: #6E7867;
+@gregor: #886244;
+
+@ts-yisang: #CFCED333;
+@ts-faust: #E9B5B533;
+@ts-donquixote: #EFDA5133;
+@ts-ryoshu: #D4404033;
+@ts-meursault: #64649A33;
+@ts-honglu: #85E4CD33;
+@ts-heathcliff: #7C5D8F33;
+@ts-ishmael: #F1A13F33;
+@ts-rodion: #993F4533;
+@ts-sinclair: #A0A45E33;
+@ts-outis: #6E786733;
+@ts-gregor: #88624433;
+
+
+.linear_sinner_mixin(@color) {
+  background: linear-gradient( 90deg, @color, transparent);
+
+  &.isMobile {
+    background: linear-gradient( 180deg, @color, transparent);
+  }
+}
+
+.border_sinner_mixin(@color) {
+  box-shadow: inset 0 0 30px @color, 0 0 30px @color;
+}
+
+.ts_hover_sinner_mixin(@color) {
+  transition-duration: 200ms;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: @color;
+  }
+}
+
+.linear_sinner_1  { .linear_sinner_mixin(@yisang)     ; }
+.linear_sinner_2  { .linear_sinner_mixin(@faust)      ; }
+.linear_sinner_3  { .linear_sinner_mixin(@donquixote) ; }
+.linear_sinner_4  { .linear_sinner_mixin(@ryoshu)     ; }
+.linear_sinner_5  { .linear_sinner_mixin(@meursault)  ; }
+.linear_sinner_6  { .linear_sinner_mixin(@honglu)     ; }
+.linear_sinner_7  { .linear_sinner_mixin(@heathcliff) ; }
+.linear_sinner_8  { .linear_sinner_mixin(@ishmael)    ; }
+.linear_sinner_9  { .linear_sinner_mixin(@rodion)     ; }
+.linear_sinner_10 { .linear_sinner_mixin(@sinclair)   ; }
+.linear_sinner_11 { .linear_sinner_mixin(@outis)      ; }
+.linear_sinner_12 { .linear_sinner_mixin(@gregor)     ; }
+
+.border_sinner_1  { .border_sinner_mixin(@yisang)     ; }
+.border_sinner_2  { .border_sinner_mixin(@faust)      ; }
+.border_sinner_3  { .border_sinner_mixin(@donquixote) ; }
+.border_sinner_4  { .border_sinner_mixin(@ryoshu)     ; }
+.border_sinner_5  { .border_sinner_mixin(@meursault)  ; }
+.border_sinner_6  { .border_sinner_mixin(@honglu)     ; }
+.border_sinner_7  { .border_sinner_mixin(@heathcliff) ; }
+.border_sinner_8  { .border_sinner_mixin(@ishmael)    ; }
+.border_sinner_9  { .border_sinner_mixin(@rodion)     ; }
+.border_sinner_10 { .border_sinner_mixin(@sinclair)   ; }
+.border_sinner_11 { .border_sinner_mixin(@outis)      ; }
+.border_sinner_12 { .border_sinner_mixin(@gregor)     ; }
+
+.border_sinner_1, .border_sinner_2, .border_sinner_3, .border_sinner_4, .border_sinner_5, .border_sinner_6, .border_sinner_7, .border_sinner_8, .border_sinner_9, .border_sinner_10, .border_sinner_11, .border_sinner_12,
+.linear_sinner_1, .linear_sinner_2, .linear_sinner_3, .linear_sinner_4, .linear_sinner_5, .linear_sinner_6, .linear_sinner_7, .linear_sinner_8, .linear_sinner_9, .linear_sinner_10, .linear_sinner_11, .linear_sinner_12
+{ border-radius: 10px; }
+
+.ts_hover_sinner_1  { .ts_hover_sinner_mixin(@ts-yisang)     ; }
+.ts_hover_sinner_2  { .ts_hover_sinner_mixin(@ts-faust)      ; }
+.ts_hover_sinner_3  { .ts_hover_sinner_mixin(@ts-donquixote) ; }
+.ts_hover_sinner_4  { .ts_hover_sinner_mixin(@ts-ryoshu)     ; }
+.ts_hover_sinner_5  { .ts_hover_sinner_mixin(@ts-meursault)  ; }
+.ts_hover_sinner_6  { .ts_hover_sinner_mixin(@ts-honglu)     ; }
+.ts_hover_sinner_7  { .ts_hover_sinner_mixin(@ts-heathcliff) ; }
+.ts_hover_sinner_8  { .ts_hover_sinner_mixin(@ts-ishmael)    ; }
+.ts_hover_sinner_9  { .ts_hover_sinner_mixin(@ts-rodion)     ; }
+.ts_hover_sinner_10 { .ts_hover_sinner_mixin(@ts-sinclair)   ; }
+.ts_hover_sinner_11 { .ts_hover_sinner_mixin(@ts-outis)      ; }
+.ts_hover_sinner_12 { .ts_hover_sinner_mixin(@ts-gregor)     ; }
+
+
+.n-h2,
+//.n-h4,
+.n-p {
+  margin: 0;
+  padding: 0;
+}
+
+.n-p {
+  font-size: 16px;
+}
 
 body {
   margin: 0;
   font-family: sans-serif;
-  overflow: hidden;
+
+  &:has(.slide-enter-active) {
+    overflow: hidden;
+  }
 
   .align-right {
     text-align: right;
@@ -16,16 +124,35 @@ body {
   }
 
   .view {
-    width: 100vw;
-    margin: 15px;
-    padding: 50px;
+    padding: 15px 15px 15px 15px;
+    overflow: auto;
   }
 
   .clickable {
     cursor: pointer;
   }
 
-  .svgSpin {
-    color: red;
+  .n-card.content {
+    background-color: @naive-grey-bg-transparent;
+    width: 85%;
+    margin: 0 auto;
+    z-index: inherit;
+
+    &.isMobile {
+      width: 95%;
+      margin-top: 50px;
+      background-color: @naive-grey-bg;
+    }
+
+    .n-h1 {
+      font-size: xxx-large;
+      font-style: italic;
+      margin: 0 auto;
+      width: fit-content;
+      position: initial;
+      z-index: 1;
+      padding: 0 15px;
+      animation: test2 4s linear infinite;
+    }
   }
 }
